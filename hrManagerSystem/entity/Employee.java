@@ -1,6 +1,9 @@
     package 王逸群.hrManagerSystem.entity;
 
-    public class Employee {
+    import 王逸群.hrManagerSystem.util.HrHelper;
+    import 王逸群.hrManagerSystem.util.IWork;
+
+    public abstract class Employee implements IWork {
         private int _userID;
         private String _userName;
         private String _password;
@@ -136,4 +139,8 @@
             _password = newPassword;
             System.out.println("密码修改成功！");
         }
+
+        public abstract void displaySalaryRange();
+
+
     }

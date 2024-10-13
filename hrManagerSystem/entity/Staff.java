@@ -29,5 +29,19 @@ public class Staff extends Employee {
         report.set_reporterID(Data.currentEmployee.get_userID());
         helper.addReport(report);
     }
+
+    @Override
+    public void displaySalaryRange() {
+        System.out.println("员工的薪资范围是：3000-5000");
+    }
+
+    @Override
+    public void doWork() {
+        HrHelper helper = new HrHelper();
+        System.out.println(helper.getDate() + ",Staff工作任务是:");
+        System.out.println("==================================");
+        System.out.println("\t到学校进行讲座!");
+        System.out.println("==================================");
+    }
 }
 

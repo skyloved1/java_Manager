@@ -28,4 +28,18 @@ public class Manager extends  Employee{
     public void displayReports() {
         helper.displayReports();
     }
+
+    @Override
+    public void displaySalaryRange() {
+        System.out.println("员工的薪资范围是：5000-8000");
+    }
+
+    @Override
+    public void doWork() {
+        HrHelper helper = new HrHelper();
+        System.out.println(helper.getDate() + ",Manager工作任务是:");
+        System.out.println("==================================");
+        System.out.println("\t指定出差计划!");
+        System.out.println("==================================");
+    }
 }

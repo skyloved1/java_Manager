@@ -20,4 +20,28 @@ public class Admin extends Employee {
          */
         helper.modifyEmployeeRole(empNo,role);
     }
+
+    @Override
+    public void displaySalaryRange() {
+        System.out.println("员工的薪资范围是：4000-6000");
+    }
+
+    /**
+     * 显示员工信息
+     *
+     * @param employee 员工对象
+     */
+    public void displayEmployeeInfo(Employee employee) {
+        HrHelper helper = new HrHelper();
+        helper.displayEmployeeInfo(employee);
+    }
+
+    @Override
+    public void doWork() {
+        HrHelper helper = new HrHelper();
+        System.out.println(helper.getDate() + ",Admin工作任务是:");
+        System.out.println("==================================");
+        System.out.println("\t维护员工基本信息!");
+        System.out.println("==================================");
+    }
 }

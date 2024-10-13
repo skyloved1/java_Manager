@@ -113,10 +113,16 @@ public class Menu {
                     //TODO 查看评测系统
                     break;
                 case "5":
-                    //TODO 查看工资范畴
+                    // 查看工资范畴
+                    Data.staff.displaySalaryRange();
+                    showStaffMenu();
+                    flag = false;
                     break;
                 case "6":
-                    //TODO 查看今日工作
+                    //查看今日工作
+                    Data.staff.doWork();
+                    showStaffMenu();
+                    flag = false;
                     break;
                 case "7":
                     //TODO 在线工作交流
@@ -178,7 +184,10 @@ public class Menu {
                     //TODO 查看工资范畴
                     break;
                 case "6":
-                    //TODO 查看今日工作
+                    //查看今日工作
+                    Data.manager.doWork();
+                    showStaffMenu();
+                    flag = false;
                     break;
                 case "7":
                     //TODO 在线工作交流
@@ -215,6 +224,15 @@ public class Menu {
             switch (num) {
                 case "1":
                     //查看员工信息
+                    System.out.println("普通员工信息如下:");
+                    System.out.println("*******************************");
+                    Data.admin.displayEmployeeInfo(Data.staff);
+                    System.out.println("经理信息如下:");
+                    System.out.println("*******************************");
+                    Data.admin.displayEmployeeInfo(Data.manager);
+                    System.out.println("系统管理员信息如下:");
+                    System.out.println("*******************************");
+                    Data.admin.displayEmployeeInfo(Data.admin);
                     showAdminMenu();
                     flag = false;
                     break;
@@ -246,7 +264,10 @@ public class Menu {
                     //TODO 工资范畴
                     break;
                 case "6":
-                    //TODO 今日工作
+                    // 今日工作
+                    Data.admin.doWork();
+                    showStaffMenu();
+                    flag = false;
                     break;
                 case "7":
                     //TODO 在线工作交流
@@ -263,6 +284,4 @@ public class Menu {
         } while (flag);
         returnMenu(input);
     }
-
-
 }

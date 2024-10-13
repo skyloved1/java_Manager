@@ -4,6 +4,7 @@ import 王逸群.hrManagerSystem.entity.Employee;
 import 王逸群.hrManagerSystem.entity.Report;
 
 import java.sql.SQLOutput;
+import java.util.Calendar;
 
 public class HrHelper {
     //登入检测
@@ -110,5 +111,22 @@ public class HrHelper {
         else{
             System.out.println("不存在该员工！");
         }
+    }
+
+    /**
+     * 显示员工信息
+     *
+     * @param employee 员工对象
+     */
+    public void displayEmployeeInfo(Employee employee) {
+        employee.displayInfo();
+    }
+
+    public String getDate() {
+        Calendar calendar = Calendar.getInstance();
+        String year = String.valueOf(calendar.get(Calendar.YEAR));
+        String month = String.valueOf(calendar.get(Calendar.MONTH) + 1);
+        String day = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+        return year + "年" + month + "月" + day + "日";
     }
 }
