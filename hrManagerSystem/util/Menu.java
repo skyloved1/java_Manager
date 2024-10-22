@@ -1,5 +1,6 @@
 package 王逸群.hrManagerSystem.util;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu {
@@ -85,6 +86,18 @@ public class Menu {
         boolean flag = true;
         do {
             String num = input.next();
+            if ("R".equals(num.toUpperCase())) {
+                flag = false;
+                showLongMenu();
+                break;
+            }
+            try {
+                Integer.parseInt(num);
+            } catch (NumberFormatException e) {
+                System.out.println(Arrays.toString(e.getStackTrace()));
+                System.out.println("输入选项有误，请重新输入！\n只能输入整型数字\t请输入菜单项数字!");
+                continue;
+            }
             switch (num) {
                 case "1":
                     //汇报工作代码
@@ -157,6 +170,18 @@ public class Menu {
         boolean flag = true;
         do {
             String num = input.next();
+            if ("R".equals(num.toUpperCase())) {
+                flag = false;
+                showLongMenu();
+                break;
+            }
+            try {
+                Integer.parseInt(num);
+            } catch (NumberFormatException e) {
+                System.out.println(Arrays.toString(e.getStackTrace()));
+                System.out.println("输入选项有误，请重新输入！\n只能输入整型数字\t请输入菜单项数字!");
+                continue;
+            }
             switch (num) {
                 case "1":
                     Data.manager.displayReports();
@@ -221,6 +246,18 @@ public class Menu {
         boolean flag = true;
         do {
             String num = input.next();
+            if ("R".equals(num.toUpperCase())) {
+                flag = false;
+                showLongMenu();
+                break;
+            }
+            try {
+                Integer.parseInt(num);
+            } catch (NumberFormatException e) {
+                System.out.println(Arrays.toString(e.getStackTrace()));
+                System.out.println("输入选项有误，请重新输入！\n只能输入整型数字\t请输入菜单项数字!");
+                continue;
+            }
             switch (num) {
                 case "1":
                     //查看员工信息

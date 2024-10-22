@@ -2,6 +2,7 @@ package 王逸群.hrManagerSystem.util;
 
 import 王逸群.hrManagerSystem.entity.Employee;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class StarHr {
@@ -58,7 +59,18 @@ public class StarHr {
         Scanner input = new Scanner(System.in);
         while (flag){
             int choice;
-            switch (choice=input.nextInt()) {
+            try {
+                choice = input.nextInt();
+            } catch (Exception e) {
+                System.out.println(Arrays.toString(e.getStackTrace()));
+                System.out.println("输入有误，请重新输入！\n“只能输入整型数字\n请输入菜单项数字");
+                input.nextLine();//清空缓冲区
+
+                continue;
+
+
+            }
+            switch (choice) {
                 case 1:
                     System.out.println("请输入用户名:");
                     String userName = input.next();
