@@ -42,4 +42,8 @@ public class Manager extends  Employee{
         System.out.println("\t指定出差计划!");
         System.out.println("==================================");
     }
+
+    public void addEvaluation(Evaluation evaluation) {
+        helper.addEvaluation(evaluation);
+    }
 }

@@ -1,10 +1,13 @@
 package 王逸群.hrManagerSystem.util;
 
 import 王逸群.hrManagerSystem.entity.Employee;
+import 王逸群.hrManagerSystem.entity.Evaluation;
 import 王逸群.hrManagerSystem.entity.Report;
 
 import java.sql.SQLOutput;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 
 public class HrHelper {
     //登入检测
@@ -37,6 +40,18 @@ public class HrHelper {
             return Data.admin;
         } else if (userId == Data.manager.get_userID()) {
             return Data.manager;
+        } else {
+            return null;
+        }
+    }
+
+    public Employee getEmployeeUserIdByEmpNo(String empNo) {
+        if (empNo.equals(Data.staff.get_empNO())) {
+            return Data.staff;
+        } else if (empNo.equals(Data.manager.get_empNO())) {
+            return Data.manager;
+        } else if (empNo.equals(Data.admin.get_empNO())) {
+            return Data.admin;
         } else {
             return null;
         }
@@ -128,5 +143,48 @@ public class HrHelper {
         String month = String.valueOf(calendar.get(Calendar.MONTH) + 1);
         String day = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
         return year + "年" + month + "月" + day + "日";
+    }
+
+    /**
+     * 添加考评
+     * 获取考评数量
+     */
+    public int getEvaluationCount() {
+        return Data.evaluation.size();
+    }
+
+    /**
+     * 添加考评
+     *
+     * @param evaluation 考评对象
+     */
+    public void addEvaluation(Evaluation evaluation) {
+        Data.evaluation.add(evaluation);
+    }
+
+    /**
+     * 显示所有评测
+     */
+    public void displayEvaluations() {
+        System.out.println("评测如下 ：");
+        System.out.println("******************************************");
+        for (Evaluation evaluation : Data.evaluation) {
+            System.out.println("评测经理: " + getEmployeeByUserID(evaluation.getEvaluatorID()).get_userName()
+                    + "\t被评测员工: " + getEmployeeByUserID(evaluation.getEvaluatedID()).get_userName()
+                    + "\t评测分数: " + evaluation.getScore());
+        }
+        //由高到低排序
+
+    }
+
+    public void displayEvaluationsDesc() {
+        System.out.println("按评测成绩由高到低排序，排序如下 ：");
+        System.out.println("******************************************");
+        Collections.sort(Data.evaluation);
+        for (Evaluation evaluation : Data.evaluation) {
+            System.out.println("评测经理: " + getEmployeeByUserID(evaluation.getEvaluatorID()).get_userName()
+                    + "\t被评测员工: " + getEmployeeByUserID(evaluation.getEvaluatedID()).get_userName()
+                    + "\t评测分数: " + evaluation.getScore());
+        }
     }
 }

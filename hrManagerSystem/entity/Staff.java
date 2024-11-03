@@ -43,5 +43,15 @@ public class Staff extends Employee {
         System.out.println("\t到学校进行讲座!");
         System.out.println("==================================");
     }
+
+    //显示所有评估
+    public void displayEvaluations() {
+        helper.displayEvaluations();
+    }
+
+    //显示所有评估（由高到低）
+    public void displayEvaluationsByDesc() {
+        helper.displayEvaluationsDesc();
+    }
 }
 

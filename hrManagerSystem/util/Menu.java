@@ -1,5 +1,7 @@
 package 王逸群.hrManagerSystem.util;
 
+import 王逸群.hrManagerSystem.entity.Evaluation;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -123,7 +125,16 @@ public class Menu {
                     flag = false;
                     break;
                 case "4":
-                    //TODO 查看评测系统
+                    // 查看评测成绩
+                    System.out.println("按从高到低查看成绩，输入d/D，默认排序，输入y/Y");
+                    String choice = input.next();
+                    if (choice.toUpperCase().equals("Y")) {
+                        Data.staff.displayEvaluations();
+                    } else if (choice.toUpperCase().equals("D")) {
+                        Data.staff.displayEvaluationsByDesc();
+                    }
+                    showStaffMenu();
+                    flag = false;
                     break;
                 case "5":
                     // 查看工资范畴
@@ -189,7 +200,22 @@ public class Menu {
                     flag = false;
                     break;
                 case "2":
-                    //TODO 考评员工
+                    // 考评员工
+                    System.out.println("请输入被评测员工编号：");
+                    String empNo = input.next();
+                    System.out.println("请输入评测分数：");
+                    double score = input.nextDouble();
+                    //实例化评估
+                    Evaluation evaluation = new Evaluation();
+                    HrHelper helper = new HrHelper();
+                    evaluation.setEvaluationID(helper.getEvaluationCount() + 1);
+                    evaluation.setEvaluatorID(Data.currentEmployee.get_userID());
+                    evaluation.setEvaluatedID(helper.getEmployeeUserIdByEmpNo(empNo).get_userID());
+                    evaluation.setScore(score);
+                    //添加评估
+                    Data.manager.addEvaluation(evaluation);
+                    showManagerMenu();
+                    flag = false;
                     break;
                 case "3":
                     //查看个人信息
@@ -228,7 +254,7 @@ public class Menu {
 
             }
         }while (flag);
-        returnMenu(input);
+        // returnMenu(input);
     }
 
     public void showAdminMenu() {
@@ -319,6 +345,6 @@ public class Menu {
                     // break;
             }
         } while (flag);
-        returnMenu(input);
+        // returnMenu(input);
     }
 }
