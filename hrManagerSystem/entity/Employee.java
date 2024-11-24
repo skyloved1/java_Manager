@@ -11,6 +11,7 @@
         private String _empNO;
         private int _departID;
         private double _salary;
+        private int roleId;
 
         public int get_userID() {
             return _userID;
@@ -68,6 +69,17 @@
             this._salary = _salary;
         }
         //constructor
+
+        public Employee(int _userID, String _userName, String _password, int _roldID, String _empNO, int _departID, double _salary, int roleId) {
+            this._userID = _userID;
+            this._userName = _userName;
+            this._password = _password;
+            this._roldID = _roldID;
+            this._empNO = _empNO;
+            this._departID = _departID;
+            this._salary = _salary;
+            this.roleId = roleId;
+        }
 
         public Employee(int _userID, String _userName, String _password, int _roldID, String _empNO, int _departID, double _salary) {
             this._userID = _userID;
@@ -143,4 +155,7 @@
         public abstract void displaySalaryRange();
 
 
+        public int getRoleId() {
+            return roleId;
+        }
     }

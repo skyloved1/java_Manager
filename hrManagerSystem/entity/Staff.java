@@ -19,6 +19,7 @@ public class Staff extends Employee {
      */
     HrHelper helper = new HrHelper();
 
+
     public void addReport() {
         System.out.println("请输入汇报信息\n");
         Scanner input = new Scanner(System.in);
