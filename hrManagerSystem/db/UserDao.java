@@ -1,6 +1,7 @@
 package 王逸群.hrManagerSystem.db;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import 王逸群.hrManagerSystem.entity.Admin;
@@ -78,10 +79,19 @@ public class UserDao {
         if (rs.next()) {
             roleId = rs.getInt(5);
         }
-        if (roleId==1) {
-            return new Staff(rs.getInt(1),rs.getString(2),
-                    rs.getString(3),rs.getInt(4),rs.getString(5),
-                    rs.getInt(6),rs.getDouble(7));}
+        ResultSetMetaData metaData = rs.getMetaData();
+        int columnCount = metaData.getColumnCount();
+
+        for (int i = 1; i <= columnCount; i++) {
+            String columnName = metaData.getColumnName(i);
+            String columnType = metaData.getColumnTypeName(i);
+            System.out.println(columnName + " - " + columnType);
+        }
+        if (roleId == 1) {
+           return new Staff(rs.getInt(1),rs.getString(2),
+                   rs.getString(3),rs.getString(4),rs.getInt(5),
+                   rs.getInt(6),rs.getDouble(7));
+        }
         if (roleId==2) {
             return new Manager(rs.getInt(1),rs.getString(2),
                     rs.getString(3),rs.getInt(4),rs.getString(5),

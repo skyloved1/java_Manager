@@ -10,7 +10,7 @@ public class Config {
 	static{
 		p = new Properties();
 		try {
-			p.load(new FileInputStream("F:\\JAVA_workspace\\chap3\\src\\王逸群\\mysql.properties"));
+			p.load(new FileInputStream("mysql.properties"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

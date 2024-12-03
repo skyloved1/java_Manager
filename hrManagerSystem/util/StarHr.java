@@ -2,11 +2,17 @@ package 王逸群.hrManagerSystem.util;
 
 import 王逸群.hrManagerSystem.db.DepartmentDao;
 import 王逸群.hrManagerSystem.db.UserDao;
+import 王逸群.hrManagerSystem.entity.Admin;
 import 王逸群.hrManagerSystem.entity.Employee;
+import 王逸群.hrManagerSystem.entity.Manager;
+import 王逸群.hrManagerSystem.entity.Staff;
 
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import static 王逸群.hrManagerSystem.util.Data.admin;
+import static 王逸群.hrManagerSystem.util.Data.manager;
 
 public class StarHr {
 
@@ -63,6 +69,9 @@ public class StarHr {
         menu.showLongMenu();
         boolean flag = true;
         Scanner input = new Scanner(System.in);
+        Staff staff=new Staff(1,"Staff","Staff","Staff",2,1,3000.5);
+        Employee manager=new Manager(2,"Manager","Manager",2,"2",2,6000.5);
+        Employee admin=new Admin(3,"Admin","Admin",3,"3",3,4000.5);
         while (flag){
             int choice;
             try {
@@ -78,7 +87,7 @@ public class StarHr {
             }
             switch (choice) {
                 case 1:
-                    System.out.println("请输入用户名：");
+                 /*   System.out.println("请输入用户名：");
                     String userName = input.next();
                     System.out.println("请输入密码：");
                     String password = input.next();
@@ -98,6 +107,8 @@ public class StarHr {
                         System.out.println("用户名或者密码不正确，请重新输入选项数字:");
                         continue;
                     }
+                    helper.readReportFile();
+                    helper.readEvluationdatas();
                     if (emp.getRoleId() == 1) {
                         menu.showStaffMenu();
                     }else if (emp.getRoleId() == 2) {
@@ -107,7 +118,26 @@ public class StarHr {
                     }
                     else  menu.showLongMenu();
                     break;
-
+*/
+                    System.out.println("请输入用户名");
+                    String userName=input.next();
+                    System.out.println("请输入密码");
+                    String password=input.next();
+                    Employee emp=helper.login(userName, password);
+                    if (emp == null) {
+                        System.out.println("用户名或密码不正确，请重新输入选项数字：");
+                        continue;
+                    }
+                    helper.readReportFile();
+                    helper.readEvluationdatas();
+                    //如果是普通员工
+                    if(userName.equals(staff.getUsername())&&password.equals(staff.getPassword()))
+                        menu.showStaffMenu();
+                    else if(userName.equals(manager.getUsername())&&password.equals(manager.getPassword()))
+                        menu.showManagerMenu();
+                    else if(userName.equals(admin.getUsername())&&password.equals(admin.getPassword()))
+                        menu.showAdminMenu();
+                    break;
                 case 2:
                     System.out.println("请输入员工编号：");
                     String empNo =input.next();
@@ -152,8 +182,21 @@ public class StarHr {
                     menu.showLongMenu();
                     break;
                 case 3:
-                    flag = false;
-                    System.out.println("感谢您的使用，再见！");
+                    System.out.println(Data.reports[0]);
+                    System.out.println("保存操作请嗯y?Y");
+                    String exit=input.next();
+                    if (exit.toUpperCase().equals("Y")) {
+                        if (Data.currentEmployee.getRoleId()==2) {
+                            helper.saveEvaluationDatas();
+                            System.out.println("选择2");
+                        }
+                        if (Data.currentEmployee.getRoleId()==1) {
+                            helper.saveReportDatas(Data.reports);
+                            System.out.println("选择1");
+                        }
+                    }
+                    flag=false;
+                    System.out.println("您退出了系统");
                     break;
                 default:
                     System.out.println("输入选项有误，请重新输入！");

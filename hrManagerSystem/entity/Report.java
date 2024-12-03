@@ -31,4 +31,24 @@ public class Report {
         this._reportContent = _reportContent;
     }
 
+
+    public int getReporterId() {
+        return _reporterID;
+    }
+
+    public String getContent() {
+        return _reportContent;
+    }
+
+    public void setReportId(int i) {
+        this._reportID = i;
+    }
+
+    public void setReporterId(int i) {
+        this._reporterID = i;
+    }
+    public void setContent(String s) {
+        this._reportContent = s;
+    }
+
 }

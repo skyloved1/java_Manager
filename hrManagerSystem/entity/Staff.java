@@ -13,11 +13,18 @@ public class Staff extends Employee {
     public Staff(int _userID, String _userName, String _password, int _roldID, String _empNO, int _departID, double _salary) {
         super(_userID, _userName, _password, _roldID, _empNO, _departID, _salary);
     }
+ public  Staff( int userid,String empNO,String  userName,String password,int roleID ,int departId,double salary){
+        super(userid,userName,password,roleID,empNO,departId,salary);
+    }
 
     /**
      * 添加汇报
      */
     HrHelper helper = new HrHelper();
+
+    public Staff(String string, String string1, String string2, int anInt, String string3, int anInt1, double aDouble) {
+        super(Integer.parseInt(string), string1, string2, anInt, string3, anInt1, aDouble);
+    }
 
 
     public void addReport() {

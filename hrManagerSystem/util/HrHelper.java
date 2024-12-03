@@ -4,7 +4,9 @@ import 王逸群.hrManagerSystem.entity.Employee;
 import 王逸群.hrManagerSystem.entity.Evaluation;
 import 王逸群.hrManagerSystem.entity.Report;
 
+import java.io.*;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
@@ -185,6 +187,147 @@ public class HrHelper {
             System.out.println("评测经理: " + getEmployeeByUserID(evaluation.getEvaluatorID()).get_userName()
                     + "\t被评测员工: " + getEmployeeByUserID(evaluation.getEvaluatedID()).get_userName()
                     + "\t评测分数: " + evaluation.getScore());
+        }
+    }
+
+
+
+
+    public String getReportsPathName() {
+        File file = new File("Reports.txt");
+        return file.getAbsolutePath();
+    }
+    public String getEvaluationPathName() {
+        File file = new File("Evaluation.txt");
+        return file.getAbsolutePath();
+    }
+    public void saveReportDatas(Report[] reports) {
+        FileOutputStream outStream = null;
+        String filePath = getReportsPathName();
+        try {
+            outStream = new FileOutputStream(filePath);
+            for (int i = 0; i < reports.length; i++) {
+                if (reports[i].getReporterId() <= 0)
+                    break;
+                String temp = reports[i].getReporterId() + "|" +
+                        reports[i].getReporterId() +
+                        "|" + reports[i].getContent() + "\r\n";
+                try {
+                    outStream.write(temp.getBytes());
+                } catch (Exception e) {
+                    // TODO: handle exception
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception ex) {
+            // TODO: handle exception
+            ex.printStackTrace();
+        }finally {
+            try {
+                outStream.close();
+            } catch (Exception ex) {
+                // TODO: handle exception
+                ex.printStackTrace();
+            }
+        }
+    }
+    public void saveEvaluationDatas() {
+        ObjectOutputStream oi = null;
+        try {
+            oi = new ObjectOutputStream(new FileOutputStream(getEvaluationPathName()));
+            oi.writeObject(Data.evaluation);
+        } catch (Exception ex) {
+            // TODO: handle exception
+            ex.printStackTrace();
+        }finally {
+            if (oi != null) {
+                try {
+                    oi.close();
+                } catch (IOException e) {
+                    // TODO: handle exception
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    private boolean isExists(String filePath) {
+        File file = new File(filePath);
+        if(file.exists())
+            return true;
+        return false;
+    }
+    private void deleteFile(String filePath) {
+        File file = new File(filePath);
+        String fileName = file.getName();
+        if(file.exists()) {
+            if(file.delete()) {
+                System.out.println("文件"+fileName+"已删除！");
+            }else {
+                System.out.println("文件删除有误！");
+            }
+        }
+    }
+    public void readReportFile() {
+        String filePath=getReportsPathName();
+        if (!isExists(filePath)) {
+            return;
+        }
+        FileReader reader=null;
+        BufferedReader br=null;
+        try {
+            int count=0;
+            reader=new FileReader(filePath);
+            br=new BufferedReader(reader);
+            String lineSr=null;
+            while ((lineSr=br.readLine())!=null) {
+                String[] info=lineSr.split("\\|");
+                Report report=new Report();
+                report.setReportId(Integer.parseInt(info[0]));
+                report.setReporterId(Integer.parseInt(info[1]));
+                report.setContent(info[2]);
+                Data.reports[count]=report;
+                count++;
+
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }finally {
+            try {
+                if (br!=null) {
+                    br.close();
+                }
+                if (reader!=null) {
+                    reader.close();
+                }
+                deleteFile(filePath);
+            } catch (IOException e) {
+                // TODO 自动生成的 catch 块
+                e.printStackTrace();
+            }
+        }
+    }
+    public void readEvluationdatas() {
+        String filePath=getEvaluationPathName();
+        if (!isExists(filePath)) {
+            return;
+        }
+        ObjectInputStream is=null;
+        try {
+            is=new ObjectInputStream(new FileInputStream(filePath));
+            Data.evaluation=(ArrayList<Evaluation>) is.readObject();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }finally {
+            try {
+                if (is!=null) {
+                    is.close();
+                }
+                deleteFile(filePath);
+            } catch (Exception e2) {
+                // TODO: handle exception
+            }
         }
     }
 }

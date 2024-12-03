@@ -15,6 +15,7 @@
 
         public int get_userID() {
             return _userID;
+            /*return  _roldID;*/
         }
 
         public String get_userName() {
@@ -78,7 +79,7 @@
             this._empNO = _empNO;
             this._departID = _departID;
             this._salary = _salary;
-            this.roleId = roleId;
+            this._roldID = roleId;
         }
 
         public Employee(int _userID, String _userName, String _password, int _roldID, String _empNO, int _departID, double _salary) {
@@ -89,6 +90,16 @@
             this._empNO = _empNO;
             this._departID = _departID;
             this._salary = _salary;
+        }
+
+        public  Employee( int userid,String empNO,String  userName,String password,int roleID ,int departId,double salary){
+            _userID = userid;
+            _userName = userName;
+            _password = password;
+            _roldID = roleID;
+            _empNO = empNO;
+            _departID = departId;
+            _salary = salary;
         }
 
         public Employee() {
@@ -156,6 +167,16 @@
 
 
         public int getRoleId() {
-            return roleId;
+            return _roldID;
+        }
+
+
+
+        public String getUsername() {
+            return _userName;
+        }
+
+        public String getPassword() {
+            return _password;
         }
     }
