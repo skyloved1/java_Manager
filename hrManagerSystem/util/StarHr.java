@@ -1,11 +1,13 @@
 package 王逸群.hrManagerSystem.util;
 
+import com.sun.tools.javac.Main;
 import 王逸群.hrManagerSystem.db.DepartmentDao;
 import 王逸群.hrManagerSystem.db.UserDao;
 import 王逸群.hrManagerSystem.entity.Admin;
 import 王逸群.hrManagerSystem.entity.Employee;
 import 王逸群.hrManagerSystem.entity.Manager;
 import 王逸群.hrManagerSystem.entity.Staff;
+import 王逸群.hrManagerSystem.view.comm.Login;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -61,7 +63,7 @@ public class StarHr {
 //    }
 
     public static void main(String[] args) throws ClassNotFoundException {
-        UserDao userDao = new UserDao();
+        /*UserDao userDao = new UserDao();
         DepartmentDao deptDao= new DepartmentDao();
         HrHelper helper=new HrHelper();
         Data.init();
@@ -87,7 +89,7 @@ public class StarHr {
             }
             switch (choice) {
                 case 1:
-                 /*   System.out.println("请输入用户名：");
+                 *//*   System.out.println("请输入用户名：");
                     String userName = input.next();
                     System.out.println("请输入密码：");
                     String password = input.next();
@@ -118,7 +120,7 @@ public class StarHr {
                     }
                     else  menu.showLongMenu();
                     break;
-*/
+*//*
                     System.out.println("请输入用户名");
                     String userName=input.next();
                     System.out.println("请输入密码");
@@ -205,6 +207,15 @@ public class StarHr {
                 break;
             }
         }
-    }
+    }*/
 
+                Login login = new Login();
+                login.setVisible(true);
+
+
+
+
+
+
+    }
 }
