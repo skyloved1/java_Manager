@@ -10,6 +10,9 @@ public class Admin extends Employee {
     public Admin(int _userID, String _userName, String _password, int _roldID, String _empNO, int _departID, double _salary) {
         super(_userID, _userName, _password, _roldID, _empNO, _departID, _salary);
     }
+    public Admin(int userId, String empNo, String username, String password, int departId, int roleId, double salary) {
+        super(userId, empNo, username, password, departId, roleId, salary);
+    }
 
     public void modifyEmployeeRole(String empNo,String role) {
         HrHelper helper = new HrHelper();

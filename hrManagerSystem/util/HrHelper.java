@@ -3,6 +3,7 @@ package 王逸群.hrManagerSystem.util;
 import 王逸群.hrManagerSystem.entity.Employee;
 import 王逸群.hrManagerSystem.entity.Evaluation;
 import 王逸群.hrManagerSystem.entity.Report;
+import 王逸群.hrManagerSystem.view.staff.StaffReport;
 
 import java.io.*;
 import java.sql.SQLOutput;
@@ -215,18 +216,15 @@ public class HrHelper {
                 try {
                     outStream.write(temp.getBytes());
                 } catch (Exception e) {
-                    // TODO: handle exception
                     e.printStackTrace();
                 }
             }
         } catch (Exception ex) {
-            // TODO: handle exception
             ex.printStackTrace();
         }finally {
             try {
                 outStream.close();
             } catch (Exception ex) {
-                // TODO: handle exception
                 ex.printStackTrace();
             }
         }
@@ -237,14 +235,12 @@ public class HrHelper {
             oi = new ObjectOutputStream(new FileOutputStream(getEvaluationPathName()));
             oi.writeObject(Data.evaluation);
         } catch (Exception ex) {
-            // TODO: handle exception
             ex.printStackTrace();
         }finally {
             if (oi != null) {
                 try {
                     oi.close();
                 } catch (IOException e) {
-                    // TODO: handle exception
                     e.printStackTrace();
                 }
             }
@@ -302,7 +298,6 @@ public class HrHelper {
                 }
                 deleteFile(filePath);
             } catch (IOException e) {
-                // TODO 自动生成的 catch 块
                 e.printStackTrace();
             }
         }
@@ -317,7 +312,6 @@ public class HrHelper {
             is=new ObjectInputStream(new FileInputStream(filePath));
             Data.evaluation=(ArrayList<Evaluation>) is.readObject();
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
         }finally {
             try {
@@ -326,7 +320,6 @@ public class HrHelper {
                 }
                 deleteFile(filePath);
             } catch (Exception e2) {
-                // TODO: handle exception
             }
         }
     }

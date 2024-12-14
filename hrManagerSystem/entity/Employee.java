@@ -1,6 +1,5 @@
     package 王逸群.hrManagerSystem.entity;
 
-    import 王逸群.hrManagerSystem.util.HrHelper;
     import 王逸群.hrManagerSystem.util.IWork;
 
     public abstract class Employee implements IWork {
@@ -178,5 +177,20 @@
 
         public String getPassword() {
             return _password;
+        }
+
+     /*   public int getDepartId() {
+            return _departID;
+        }*/
+        public String getDepartId() {
+            return String.valueOf(_departID);
+        }
+
+        public int getUserId() {
+            return _userID;
+        }
+
+        public double getSalary() {
+            return _salary;
         }
     }

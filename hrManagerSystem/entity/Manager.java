@@ -13,6 +13,10 @@ public class Manager extends  Employee{
     public Manager(int _userID, String _userName, String _password, int _roldID, String _empNO, int _departID, double _salary) {
         super(_userID, _userName, _password, _roldID, _empNO, _departID, _salary);
     }
+    public Manager(int userId, String empNo, String username, String password, int departId, int roleId,
+                    double salary) {
+        super(userId, empNo, username, password, departId, roleId, salary);
+    }
 
     HrHelper helper= new HrHelper();
     public void addReport() {

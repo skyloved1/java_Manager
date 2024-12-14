@@ -4,7 +4,23 @@ public class Report {
     private  int _reportID;
     private int _reporterID;
     private String _reportContent;
+    private String reportdate;
+    public Report(int reportId, int reporterId, String content, String reportdate) {
+        this._reportID = reportId;
+        this._reporterID = reporterId;
+        this._reportContent = content;
+        this.reportdate = reportdate;
+    }
 
+    public Report() {
+
+    }
+
+    public Report(int i, int userId, String text) {
+        this._reportID = i;
+        this._reporterID = userId;
+        this._reportContent = text;
+    }
 
     //setter getter
     public int get_reportID() {
@@ -51,4 +67,7 @@ public class Report {
         this._reportContent = s;
     }
 
+    public String getReportdate() {
+        return reportdate;
+    }
 }

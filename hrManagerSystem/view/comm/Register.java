@@ -160,4 +160,139 @@ public class Register extends JFrame {
         this.getRootPane().setDefaultButton(btnRegister);
         getContentPane().add(pnlBackground);
     }
+    public JLabel getLblEmpno() {
+        return lblEmpno;
+    }
+
+    public void setLblEmpno(JLabel lblEmpno) {
+        this.lblEmpno = lblEmpno;
+    }
+
+    public JLabel getLblName() {
+        return lblName;
+    }
+
+    public void setLblName(JLabel lblName) {
+        this.lblName = lblName;
+    }
+
+    public JLabel getLblPassword() {
+        return lblPassword;
+    }
+
+    public void setLblPassword(JLabel lblPassword) {
+        this.lblPassword = lblPassword;
+    }
+
+    public JLabel getLblPasswordConfirm() {
+        return lblPasswordConfirm;
+    }
+
+    public void setLblPasswordConfirm(JLabel lblPasswordConfirm) {
+        this.lblPasswordConfirm = lblPasswordConfirm;
+    }
+
+    public JLabel getLblDepartment() {
+        return lblDepartment;
+    }
+
+    public void setLblDepartment(JLabel lblDepartment) {
+        this.lblDepartment = lblDepartment;
+    }
+
+    public JLabel getLblSalary() {
+        return lblSalary;
+    }
+
+    public void setLblSalary(JLabel lblSalary) {
+        this.lblSalary = lblSalary;
+    }
+
+    public JTextField getTxtEmpno() {
+        return txtEmpno;
+    }
+
+    public void setTxtEmpno(JTextField txtEmpno) {
+        this.txtEmpno = txtEmpno;
+    }
+
+    public JTextField getTxtName() {
+        return txtName;
+    }
+
+    public void setTxtName(JTextField txtName) {
+        this.txtName = txtName;
+    }
+
+    public JTextField getTxtSalary() {
+        return txtSalary;
+    }
+
+    public void setTxtSalary(JTextField txtSalary) {
+        this.txtSalary = txtSalary;
+    }
+
+    public JPasswordField getTxtPassword() {
+        return txtPassword;
+    }
+
+    public void setTxtPassword(JPasswordField txtPassword) {
+        this.txtPassword = txtPassword;
+    }
+
+    public JPasswordField getTxtPasswordConfirm() {
+        return txtPasswordConfirm;
+    }
+
+    public void setTxtPasswordConfirm(JPasswordField txtPasswordConfirm) {
+        this.txtPasswordConfirm = txtPasswordConfirm;
+    }
+
+    public JButton getBtnRegister() {
+        return btnRegister;
+    }
+
+    public void setBtnRegister(JButton btnRegister) {
+        this.btnRegister = btnRegister;
+    }
+
+    public JButton getBtnReturn() {
+        return btnReturn;
+    }
+
+    public void setBtnReturn(JButton btnReturn) {
+        this.btnReturn = btnReturn;
+    }
+
+    public JComboBox getCobDepartment() {
+        return cobDepartment;
+    }
+
+    public void setCobDepartment(JComboBox cobDepartment) {
+        this.cobDepartment = cobDepartment;
+    }
+
+    public JPanel getPnlBackground() {
+        return pnlBackground;
+    }
+
+    public void setPnlBackground(JPanel pnlBackground) {
+        this.pnlBackground = pnlBackground;
+    }
+
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    public DepartmentDao getDeptDao() {
+        return deptDao;
+    }
+
+    public void setDeptDao(DepartmentDao deptDao) {
+        this.deptDao = deptDao;
+    }
 }

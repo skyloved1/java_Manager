@@ -39,4 +39,25 @@ public class DepartmentDao {
 		}
 		dbUtil.closeAll();
 	}
+
+	public String getDepartmentNameById(int departId) throws SQLException, ClassNotFoundException {
+		String strSql="select name from department where departid=?";
+		String[] parameters=new String[] {String.valueOf(departId)};
+		DBUtil db=new DBUtil();
+		db.getConnection();
+		String result=null;
+		try {
+			ResultSet rs=db.executeStatement(strSql, parameters);
+			if (rs.next()) {
+				result=rs.getString(1);
+				System.out.println("测试2："+result+","+rs.getString(1));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			db.closeAll();
+		}
+		return result;
+
+	}
 }

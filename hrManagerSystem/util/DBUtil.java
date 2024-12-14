@@ -76,9 +76,26 @@ public class DBUtil {
 			}
 			count = ps.executeUpdate();
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return count;
+	}
+	public ResultSet executeStatement(String pr, String[] pa) {
+		try {
+			if (conn == null || conn.isClosed()) {
+				throw new SQLException("数据库连接未建立");
+			}
+			ps = conn.prepareStatement(pr);
+			if (pa != null) {
+				for (int i = 0; i < pa.length; i++) {
+					ps.setString(i + 1, pa[i]);
+				}
+			}
+			rs = ps.executeQuery();
+			return rs;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 } 
